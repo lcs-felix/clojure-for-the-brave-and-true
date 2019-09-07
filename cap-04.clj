@@ -1,11 +1,11 @@
-;; a simple (incomplete and eager) implementation of map function using reduce
+;; a simple (incomplete and eager) implementation of the map function using reduce
 
 (defn my-map
   [f coll]
     (seq (reduce (fn [new-coll element] (conj new-coll (f element)))
                [] coll)))
 
-;; an implementation of some function using reduce
+;; an implementation of the filter function using reduce
 
 (defn my-filter
   [pred coll]
@@ -15,7 +15,7 @@
                    (conj new-coll element) new-coll)) 
               [] coll)))
 
-;; an implementation of some function using reduce
+;; an implementation of the some function using reduce
 
 (defn my-some
   [pred coll]
