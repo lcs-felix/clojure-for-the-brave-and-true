@@ -5,7 +5,7 @@
     (seq (reduce (fn [new-coll element] (conj new-coll (f element)))
                [] coll)))
 
-;; an implementation of the filter function using reduce
+;; an implementation (incomplete and eager) of the filter function using reduce
 
 (defn my-filter
   [pred coll]
