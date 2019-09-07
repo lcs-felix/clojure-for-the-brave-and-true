@@ -7,6 +7,16 @@
 
 ;; an implementation of some function using reduce
 
+(defn my-filter
+  [pred coll]
+  (sequence (reduce 
+              (fn [new-coll element]
+                 (if (pred element) 
+                   (conj new-coll element) new-coll)) 
+              [] coll)))
+
+;; an implementation of some function using reduce
+
 (defn my-some
   [pred coll]
   (reduce (fn [init value]
