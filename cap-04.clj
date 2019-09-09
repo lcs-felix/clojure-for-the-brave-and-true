@@ -5,11 +5,11 @@
     (seq (reduce (fn [new-coll element] (conj new-coll (f element)))
                [] coll)))
 
-;; an implementation (incomplete and eager) of the filter function using reduce
+;; an simple (eager) implementation of the filter function using reduce
 
 (defn my-filter
   [pred coll]
-  (sequence (reduce 
+  (sequence (reduce   
               (fn [new-coll element]
                  (if (pred element) 
                    (conj new-coll element) new-coll)) 
@@ -23,3 +23,13 @@
             (let [result (or (pred value) init)]
               (if result (reduced result))))
           nil coll))
+
+;; 1
+
+(defn glitter-filter
+  [minimum-glitter records]
+  (map #(:name %)
+       (filter #(>= (:glitter-index %) minimum-glitter) records)))
+
+;; 2
+

@@ -1,4 +1,4 @@
-; 1
+;; 1
 (str "Farinha, "  "rapadura " " e graviola")
 
 (def foods ["farinha", "rapadura", "graviola"])
@@ -7,7 +7,7 @@
 (def list-food '("farinha", "rapadura", "graviola"))
 (conj list-food "manteiga da terra")
 
-; 2
+;; 2
 
 (defn inc-100
   [number]
@@ -16,7 +16,7 @@
 (inc-100 100)
 (inc-100 0)
 
-; 3
+;; 3
 
 (defn dec-maker
   [dec-value]
@@ -26,7 +26,7 @@
 
 (dec9 10)
 
-; 4
+;; 4
 
 (defn mapset
   [f coll]
@@ -40,7 +40,7 @@
 
 (mapset inc [1 1 2 2])
 
-; 5
+;; 5
 
 (def asym-alien-parts
   [{:name "head" :size 10}
@@ -63,5 +63,5 @@
 
 (symmetrize-body-parts asym-alien-parts)
 
-; 6
+;; 6
 
