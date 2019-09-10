@@ -33,3 +33,6 @@
 
 ;; 2
 
+(defn append
+  [coll new-item]
+  (lazy-seq (conj (into [] coll) new-item)))
