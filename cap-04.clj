@@ -35,4 +35,32 @@
 
 (defn append
   [coll new-item]
-  (lazy-seq (conj (into [] coll) new-item)))
+  (conj (into [] coll) new-item))
+;; (append (glitter-filter 3 (mapify (parse (slurp filename))))
+;;          {:name "Zé Vampir", :glitter-index 5})
+
+;; 3
+
+(defn validate
+  [validating-functions record]
+  (reduce (fn [errors-list [error-key validate-function]]
+            (if (not (validate-function record))
+              (conj errors-list error-key)
+              errors-list))
+          [] validating-functions))
+
+(defn append
+  [coll new-item]
+  (let [errors-list (validate rules new-item)]
+    (if (empty? errors-list)
+      (conj (into [] coll) new-item)
+      errors-list)))
+
+;; 4
+
+(defn to-csv
+  [records]
+  (reduce #(str %1 %2 "\n")
+          ""
+          (map (fn [record]
+                 (str/join "," (vals record))) records)))
