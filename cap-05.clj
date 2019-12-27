@@ -10,13 +10,13 @@
 
 ((my-comp inc +) 10 10)
 
-;; Function attr
+;; attr fucntion
 
 (defn attr
   [attribute]
   (comp attribute :attributes))
 
-;; Function assoc-in copied from clojure core:
+;; assoc-in function copied from clojure core:
 ;; https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L6161
 
 (defn assoc-in
@@ -25,7 +25,7 @@
     (assoc m k (assoc-in (get m k) ks v))
     (assoc m k v)))
 
-;; Function update-in
+;; Implement update-in function
 
 (defn my-update-in
   [m ks f & args]
