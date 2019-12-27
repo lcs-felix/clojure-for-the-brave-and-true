@@ -16,12 +16,19 @@
   [attribute]
   (comp attribute :attributes))
 
-;; Implement the assoc-in function
+;; Function assoc-in copied from clojure core:
+;; https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L6161
 
-(defn my-assoc-in
+(defn assoc-in
   [m [k & ks] v]
-  (let [keys (reverse ks)
-        new-map (reduce (fn [inner-map key]
-                          (assoc {} key inner-map))
-                {(first keys) v} (rest keys))]
-    (assoc m k new-map)))
+  (if ks
+    (assoc m k (assoc-in (get m k) ks v))
+    (assoc m k v)))
+
+;; Function update-in
+
+(defn my-update-in
+  [m ks f & args]
+  (let [old-value (get-in m ks)
+   new-value (apply f old-value args)]
+    (assoc-in m ks new-value)))
